@@ -13,8 +13,10 @@ termux_step_pre_configure() {
 	sed -i '/tests /d' src/Makefile.am
 	sed -i 's/ -lpthread//' src/xdemos/Makefile.am
 	autoreconf -fi
-	export CFLAGS+=" -g"
-	export CXXFLAGS+=" -g"
+	if [ "$TERMUX_ARCH" = "arm" ]; then
+		export CFLAGS+=" -marm"
+		export CXXFLAGS+=" -marm"
+	fi
 }
 
 termux_step_install_license() {
