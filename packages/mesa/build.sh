@@ -12,6 +12,7 @@ TERMUX_PKG_DEPENDS="libandroid-shmem, libexpat, libdrm, libx11, libxdamage, libx
 TERMUX_PKG_BUILD_DEPENDS="xorgproto"
 TERMUX_PKG_CONFLICTS="libmesa"
 TERMUX_PKG_REPLACES="libmesa"
+TERMUX_DEBUG_BUILD=true
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 --disable-static
