@@ -33,8 +33,8 @@ ac_cv_header_xlocale_h=no
 
 termux_step_pre_configure() {
 	if [ "$TERMUX_ARCH" = "arm" ]; then
-		export CFLAGS+=" -marm"
-		export CXXFLAGS+=" -marm"
+		export CFLAGS="${CFLAGS/-mthumb/-marm}"
+		export CXXFLAGS="${CXXFLAGS/-mthumb/-marm}"
 	fi
 	export LIBS="-landroid-shmem -latomic"
 }
