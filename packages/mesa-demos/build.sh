@@ -14,8 +14,8 @@ termux_step_pre_configure() {
 	sed -i 's/ -lpthread//' src/xdemos/Makefile.am
 	autoreconf -fi
 	if [ "$TERMUX_ARCH" = "arm" ]; then
-		export CFLAGS+=" -marm"
-		export CXXFLAGS+=" -marm"
+		export CFLAGS="${$CFLAGS/-mthumb/-marm}"
+		export CXXFLAGS="${$CXXLAGS/-mthumb/-marm}"
 	fi
 }
 
