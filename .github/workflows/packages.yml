@@ -3,12 +3,13 @@ name: Packages
 on:
   push:
     branches:
-    - master
+      - master
     paths:
-    - 'packages/**'
+      - 'packages/**'
   pull_request:
     paths:
-    - 'packages/**'
+      - 'packages/**'
+  workflow_dispatch:  # Adiciona a opção de disparo manual
 
 jobs:
   build:
