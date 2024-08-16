@@ -3,12 +3,12 @@ name: Packages
 on:
   push:
     branches:
-    - master
+      - master
     paths:
-    - 'packages/**'
+      - 'packages/**'
   pull_request:
     paths:
-    - 'packages/**'
+      - 'packages/**'
   workflow_dispatch:
     inputs:
       packages:
