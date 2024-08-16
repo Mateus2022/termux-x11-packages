@@ -3,14 +3,17 @@ name: Packages
 on:
   push:
     branches:
-      - master
+    - master
     paths:
-      - 'packages/**'
+    - 'packages/**'
   pull_request:
     paths:
-      - 'packages/**'
-  workflow_dispatch:  # Adiciona a opção de disparo manual
-
+    - 'packages/**'
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: "A space-separated names of packages selected for rebuilding"
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
