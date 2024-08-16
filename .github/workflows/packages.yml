@@ -18,17 +18,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ANDROID_HOME: "/opt/termux/android-sdk"
       NDK: "/opt/termux/android-ndk"
-    strategy:
-      matrix:
-        target_arch: [aarch64, arm, i686, x86_64]
-      fail-fast: false
+      ANDROID_HOME: "/opt/termux/android-sdk"
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 1000
+    - name: Verify Environment Variables
+      run: |
+        if [ ! -d "$NDK" ]; then
+          echo "NDK directory does not exist: $NDK"
+          exit 1
+        fi
+
+        if [ ! -d "$ANDROID_HOME" ]; then
+          echo "ANDROID_HOME directory does not exist: $ANDROID_HOME"
+          exit 1
+        fi
+
+        echo "NDK is set to: $NDK"
+        echo "ANDROID_HOME is set to: $ANDROID_HOME"
+
     - name: Build packages
       run: |
         if [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
